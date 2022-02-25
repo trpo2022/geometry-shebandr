@@ -1,0 +1,3 @@
+Object= 'circle' '(' 100 100 ',' 50 ')'
+| 'triangle' '(' '(' Point ',' Point ',' Point ',' Point ')' ')'
+| 'polygon' '(' '(' Point ',' Point ',' Point {',' Point } ')' ')'
