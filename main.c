@@ -2,16 +2,38 @@
 
 int main()
 {
-    FILE* fp;
-    char name[] = "my.txt";
-    if ((fp = fopen(name, "r")) == NULL) {
-        printf("Не удалось открыть файл");
-        getchar();
-        return 0;
-    } else {
-        printf("Удалось открыть файл");
-    }
+    FILE* mf;
+    char str[50];
+    char* estr;
+    printf("Открытие файла: ");
+    mf = fopen("input.txt", "r");
 
-    fclose(fp);
+    if (mf == NULL) {
+        printf("ошибка\n");
+        return -1;
+    } else
+        printf("выполнено\n");
+
+    printf("Считаны строки:\n");
+
+    while (1) {
+        estr = fgets(str, sizeof(str), mf);
+
+        if (estr == NULL) {
+            if (feof(mf) != 0) {
+                printf("\nЧтение файла закончено\n");
+                break;
+            } else {
+                printf("\nОшибка чтения из файла\n");
+                break;
+            }
+        }
+        printf("%s", str);
+    }
+    printf("Закрытие файла: ");
+    if (fclose(mf) == EOF)
+        printf("ошибка\n");
+    else
+        printf("выполнено\n");
     getchar();
 }
