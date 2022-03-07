@@ -1,3 +1,2 @@
-Object= 'circle' '(' 100 100 ',' 50 ')'
-| 'triangle' '(' '(' Point ',' Point ',' Point ',' Point ')' ')'
-| 'polygon' '(' '(' Point ',' Point ',' Point {',' Point } ')' ')'
+circle(1 2.9, 3.4)
+circle(5 2.9, 1)
