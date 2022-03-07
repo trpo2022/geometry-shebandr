@@ -1,50 +1,54 @@
-#include <stdio.h>
+#include <iostream>
+#include <fstream>
+#include <string>
 
+using namespace std;
 int main()
 {
-    FILE* mf;
-    char str[50];
-    char* estr;
-    printf("Открытие файла: ");
-    mf = fopen("input.txt", "r");
+    string line;
+    string Slices[500];
+    ifstream input("input.txt"); // окрываем файл для чтения
+    if (input.is_open())
+    {
+        int w=0;
+        int k = 0;
+        while (getline(input, line))
+        {
 
-    if (mf == NULL) {
-        printf("ошибка\n");
-        return -1;
-    } else
-        printf("выполнено\n");
 
-    printf("Считаны строки:\n");
+            for(int i=0 ; i<line.length()-1; i++){
+                if(line[i]==' ' || line[i]==')' || line[i]=='(' || line[i]==',') {
 
-    while (1) {
-        estr = fgets(str, sizeof(str), mf);
+                   i++;
+                } else {
+                    int q=0;
+                    string slice = "";
 
-        if (estr == NULL) {
-            if (feof(mf) != 0) {
-                printf("\nЧтение файла закончено\n");
-                break;
-            } else {
-                printf("\nОшибка чтения из файла\n");
-                break;
+                    while(line[i+q]!=' ' && line[i+q]!='(' && line[i+q]!=')' && line[i+q]!=','){
+                        slice += line[i+q];
+
+                        q++;
+
+                    }
+                    Slices[k]=slice;
+                    k++;
+                    i+=q;
+                    cout << slice << endl;
+                }
             }
-        }
-        char modstr[sizeof(str)/50];
-        int cnt = 0;
-        for(int q=0;q<(sizeof(str)/2);q++){
-            if(str[q]!=" "){
-                modstr[cnt]=str[q];
-                cnt++;
-                printf("%s", str[q]);
+            if(Slices[w]=="circle"){
+                cout << "it's circle" << endl;
+            } else {
+                cout << "error, it's not a circle" << endl;
+                return 1;
+            }
 
-        }}
-//         printf("%s", str);
-//         printf("\n test \n");
-  //       printf("%s", modstr);
+            w+=4;
+
+        }
     }
-    printf("Закрытие файла: ");
-    if (fclose(mf) == EOF)
-        printf("ошибка\n");
-    else
-        printf("выполнено\n");
-    getchar();
+    input.close();     // закрываем файл
+
+    cout << "End of program" << endl;
+    return 0;
 }
