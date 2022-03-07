@@ -28,7 +28,18 @@ int main()
                 break;
             }
         }
-        printf("%s", str);
+        char modstr[sizeof(str)/50];
+        int cnt = 0;
+        for(int q=0;q<(sizeof(str)/2);q++){
+            if(str[q]!=" "){
+                modstr[cnt]=str[q];
+                cnt++;
+                printf("%s", str[q]);
+
+        }}
+//         printf("%s", str);
+//         printf("\n test \n");
+  //       printf("%s", modstr);
     }
     printf("Закрытие файла: ");
     if (fclose(mf) == EOF)
