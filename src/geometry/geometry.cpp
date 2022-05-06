@@ -10,9 +10,9 @@ int main()
     string line;
     string Slices[500];
     ifstream input(
-            "/home/pc/учеба/хуйня по "
-            "учебе/prog/trpo/huy/geometry-shebandr/input.txt"); // окрываем файл
-                                                                // для чтения
+
+            "input.txt"); // окрываем файл
+                          // для чтения
     if (input.is_open()) {
         int w = 0;
         int k = 0;
@@ -52,7 +52,7 @@ int main()
             w += 4;
         }
     } else {
-        std::cout << "хуй пизда ошибка" << std::endl;
+
     }
     input.close(); // закрываем файл
     std::cout << "End of program" << std::endl;
