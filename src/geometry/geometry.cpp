@@ -1,4 +1,6 @@
+#include <cstdlib>
 #include <fstream>
+#include <geometrylib/intersects.h>
 #include <geometrylib/perimeter.h>
 #include <geometrylib/square.h>
 #include <iostream>
@@ -9,12 +11,10 @@ int main()
 {
     string line;
     string Slices[500];
-    ifstream input(
+    ifstream input("input.txt");
 
-            "input.txt"); // окрываем файл
-                          // для чтения
     if (input.is_open()) {
-        int w = 0;
+        int q = 0;
         int k = 0;
         while (getline(input, line)) {
             for (size_t i = 0; i < line.length() - 1; i++) {
@@ -34,27 +34,63 @@ int main()
                     Slices[k] = slice;
                     k++;
                     i += q;
-                    std::cout << slice << std::endl;
+                    cout << slice << endl;
                 }
             }
-            if (Slices[w] == "circle") {
-                std::cout << "it's circle" << std::endl;
-                std::cout << "perimetr: "
-                          << calculate_perimeter(stof(Slices[w + 3]))
-                          << std::endl;
-                std::cout << "ploshad: "
-                          << calculate_square(stof(Slices[w + 3])) << std::endl;
-            } else {
-                std::cout << "error, it's not a circle" << std::endl;
-                return 1;
-            }
-
-            w += 4;
+            q += 4;
         }
-    } else {
-
+        for (int w = 0; w < q; w += 4) {
+            cout << "it's circle" << endl;
+            cout << "perimeter: " << calculate_perimeter(stof(Slices[w + 3]))
+                 << endl;
+            cout << "ploshad: " << calculate_square(stof(Slices[w + 3]))
+                 << endl;
+            for (int z = w; z < q-4; z += 4) {
+                if (Slices[w] == "circle") {
+                    if ((intersects(
+                                 strtof(Slices[w + 1].c_str(), nullptr),
+                                 strtof(Slices[w + 2].c_str(), nullptr),
+                                 strtof(Slices[w + 3].c_str(), nullptr),
+                                 strtof(Slices[z + 1].c_str(), nullptr),
+                                 strtof(Slices[z + 2].c_str(), nullptr),
+                                 strtof(Slices[z + 3].c_str(), nullptr))
+                         == 0)
+                        && (Slices[w + 4] == "circle")) {
+                        cout << w / 4 << " and " << (z / 4) + 1
+                             << " not intersect" << endl;
+                    } else if (
+                            (intersects(
+                                     strtof(Slices[w + 1].c_str(), nullptr),
+                                     strtof(Slices[w + 2].c_str(), nullptr),
+                                     strtof(Slices[w + 3].c_str(), nullptr),
+                                     strtof(Slices[z + 1].c_str(), nullptr),
+                                     strtof(Slices[z + 2].c_str(), nullptr),
+                                     strtof(Slices[z + 3].c_str(), nullptr))
+                             == 1)
+                            && (Slices[w + 4] == "circle")) {
+                        cout << w / 4 << " and " << (z / 4) + 1 << " touches "
+                             << endl;
+                    } else if (
+                            (intersects(
+                                     strtof(Slices[w + 1].c_str(), nullptr),
+                                     strtof(Slices[w + 2].c_str(), nullptr),
+                                     strtof(Slices[w + 3].c_str(), nullptr),
+                                     strtof(Slices[z + 1].c_str(), nullptr),
+                                     strtof(Slices[z + 2].c_str(), nullptr),
+                                     strtof(Slices[z + 3].c_str(), nullptr))
+                             == 2)
+                            && (Slices[w + 4] == "circle")) {
+                        cout << w / 4 << " and " << (z / 4) + 1 << " intersect"
+                             << endl;
+                    }
+                } else {
+                    cout << "error, it's not a circle" << endl;
+                    return 1;
+                }
+            }
+        }
     }
     input.close(); // закрываем файл
-    std::cout << "End of program" << std::endl;
+    cout << "End of program" << endl;
     return 0;
 }

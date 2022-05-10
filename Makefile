@@ -1,7 +1,7 @@
 APP_NAME = geometry
 LIB_NAME = geometrylib
 
-CFLAGS = -Wall -Wextra -lstdc++
+CFLAGS = -Wall -Wextra -lstdc++ -lm
 CPPFLAGS = -I src -MP -MMD
 LDFLAGS =
 LDLIBS =
