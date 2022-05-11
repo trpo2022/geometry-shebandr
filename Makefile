@@ -1,3 +1,5 @@
+CC = g++
+
 APP_NAME = geometry
 LIB_NAME = geometrylib
 
