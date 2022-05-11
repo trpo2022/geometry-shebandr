@@ -34,18 +34,20 @@ int main()
                     Slices[k] = slice;
                     k++;
                     i += q;
-                    cout << slice << endl;
                 }
             }
             q += 4;
         }
         for (int w = 0; w < q; w += 4) {
             cout << "it's circle" << endl;
+            cout << "on coordinates: " << Slices[w + 1] << " " << Slices[w + 2]
+                 << endl;
+            cout << "with radius: " << Slices[w + 3] << endl;
             cout << "perimeter: " << calculate_perimeter(stof(Slices[w + 3]))
                  << endl;
             cout << "ploshad: " << calculate_square(stof(Slices[w + 3]))
                  << endl;
-            for (int z = w; z < q-4; z += 4) {
+            for (int z = w; z < q - 4; z += 4) {
                 if (Slices[w] == "circle") {
                     if ((intersects(
                                  strtof(Slices[w + 1].c_str(), nullptr),
