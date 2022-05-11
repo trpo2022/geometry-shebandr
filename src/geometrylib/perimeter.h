@@ -1,4 +1,3 @@
 #pragma once
 
-  float calculate_perimeter(float);
- 
+float calculate_perimeter(float);

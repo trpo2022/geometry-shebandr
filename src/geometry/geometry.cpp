@@ -73,7 +73,7 @@ int main()
             }
         }
     }
-    input.close(); 
+    input.close();
     cout << "End of program" << endl;
     return 0;
 }
