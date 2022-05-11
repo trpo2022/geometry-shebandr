@@ -20,4 +20,5 @@ int intersects(
     } else if (distanceObs < firstR + secondR) {
         return 2;
     }
+    return 3;
 }
