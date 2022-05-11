@@ -3,6 +3,7 @@
 #include <geometrylib/intersects.h>
 #include <geometrylib/perimeter.h>
 #include <geometrylib/square.h>
+#include <geometrylib/stringCollapse.h>
 #include <iostream>
 #include <stdio.h>
 #include <string>
@@ -10,35 +11,15 @@ using namespace std;
 int main()
 {
     string line;
-    string Slices[500];
+    string Slices[50];
     ifstream input("input.txt");
 
     if (input.is_open()) {
-        int q = 0;
         int k = 0;
         while (getline(input, line)) {
-            for (size_t i = 0; i < line.length() - 1; i++) {
-                if (line[i] == ' ' || line[i] == ')' || line[i] == '('
-                    || line[i] == ',') {
-                    i++;
-                } else {
-                    int q = 0;
-                    string slice = "";
-
-                    while (line[i + q] != ' ' && line[i + q] != '('
-                           && line[i + q] != ')' && line[i + q] != ',') {
-                        slice += line[i + q];
-
-                        q++;
-                    }
-                    Slices[k] = slice;
-                    k++;
-                    i += q;
-                }
-            }
-            q += 4;
+            k = stringCollapse(line, Slices, k);
         }
-        for (int w = 0; w < q; w += 4) {
+        for (int w = 0; w < k; w += 4) {
             cout << "it's circle" << endl;
             cout << "on coordinates: " << Slices[w + 1] << " " << Slices[w + 2]
                  << endl;
@@ -47,7 +28,7 @@ int main()
                  << endl;
             cout << "ploshad: " << calculate_square(stof(Slices[w + 3]))
                  << endl;
-            for (int z = w; z < q - 4; z += 4) {
+            for (int z = w; z < k - 4; z += 4) {
                 if (Slices[w] == "circle") {
                     if ((intersects(
                                  strtof(Slices[w + 1].c_str(), nullptr),
@@ -92,7 +73,7 @@ int main()
             }
         }
     }
-    input.close(); // закрываем файл
+    input.close(); 
     cout << "End of program" << endl;
     return 0;
 }
