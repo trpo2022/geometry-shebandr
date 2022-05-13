@@ -101,3 +101,4 @@ CTEST(stringCollapse, testRad)
     stringCollapse(line, Slices, k);
     ASSERT_STR("5", Slices[3].c_str());
 }
+
