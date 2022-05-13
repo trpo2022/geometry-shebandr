@@ -25,3 +25,35 @@ CTEST(calculate_square, test_true)
     double real = calculate_square(a);
     ASSERT_DBL_NEAR(exp, real);
 }
+
+CTEST(intersects, touch)
+{
+    double a = 1, b = 1, c = 2, d = 1, e = 5, f = 2;
+    const int exp = 1;
+    double real = intersects(a, b, c, d, e, f);
+    ASSERT_EQUAL(exp, real);
+}
+
+CTEST(intersects, intersect)
+{
+    double a = 1, b = 1, c = 2, d = 1, e = 5, f = 3;
+    const int exp = 2;
+    double real = intersects(a, b, c, d, e, f);
+    ASSERT_EQUAL(exp, real);
+}
+
+CTEST(intersects, freeExternal)
+{
+    double a = 1, b = 1, c = 2, d = 1, e = 5, f = 1;
+    const int exp = 0;
+    double real = intersects(a, b, c, d, e, f);
+    ASSERT_EQUAL(exp, real);
+}
+
+CTEST(intersects, freeInterior)
+{
+    double a = 1, b = 1, c = 20, d = 1, e = 5, f = 1;
+    const int exp = 0;
+    double real = intersects(a, b, c, d, e, f);
+    ASSERT_EQUAL(exp, real);
+}
