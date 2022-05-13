@@ -18,6 +18,9 @@ int main()
         int k = 0;
         while (getline(input, line)) {
             k = stringCollapse(line, Slices, k);
+            if(k==-1){
+                return 0;
+            }
         }
         for (int w = 0; w < k; w += 4) {
             cout << "it's circle" << endl;

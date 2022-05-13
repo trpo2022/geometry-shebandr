@@ -25,6 +25,11 @@ int stringCollapse(string line, string* Slices, int k)
             i += q;
         }
     }
+    cout << strtof(Slices[k-1].c_str(), nullptr)  << endl;
+    if (strtof(Slices[k-1].c_str(), nullptr) < 0) {
+        cout << "radius can't be negative" << endl;
+        return -1;
+    }
     q += 4;
     return k;
 }
