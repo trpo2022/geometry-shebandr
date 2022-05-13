@@ -17,3 +17,11 @@ CTEST(calculate_perimeter, test_true)
     double real = calculate_perimeter(a);
     ASSERT_DBL_NEAR(exp, real);
 }
+
+CTEST(calculate_square, test_true)
+{
+    double a = 2.5;
+    const double exp = a * a * M_PI;
+    double real = calculate_square(a);
+    ASSERT_DBL_NEAR(exp, real);
+}
