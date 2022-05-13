@@ -43,9 +43,8 @@ $(LIB_PATH): $(LIB_OBJ)
 	ar rcs $@ $^
 
 $(OBJ_DIR)/%.o: %.cpp
-	$(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@
-
-
+	$(CC) -c $(CFLAGS) $(CPPFLAGS) -I thirdparty $< -o $@ -lm
+	
 test: $(TEST_PATH)
 -include $(DEPS)
 $(TEST_PATH): $(TEST_OBJ) $(LIB_PATH)
