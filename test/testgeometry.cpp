@@ -1,10 +1,10 @@
 #include <cstdlib>
 #include <ctest.h>
 #include <fstream>
-#include <geometrylib/intersects.h>
-#include <geometrylib/perimeter.h>
-#include <geometrylib/square.h>
-#include <geometrylib/stringCollapse.h>
+#include <geometrylib/intersects.hpp>
+#include <geometrylib/perimeter.hpp>
+#include <geometrylib/square.hpp>
+#include <geometrylib/stringCollapse.hpp>
 #include <iostream>
 #include <stdio.h>
 #include <string>

@@ -1,4 +1,4 @@
-#include <geometrylib/stringCollapse.h>
+#include <geometrylib/stringCollapse.hpp>
 #include <iostream>
 #include <string>
 using namespace std;

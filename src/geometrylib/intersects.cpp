@@ -1,5 +1,5 @@
 #include <cmath>
-#include <geometrylib/intersects.h>
+#include <geometrylib/intersects.hpp>
 #include <iostream>
 #include <string>
 using namespace std;
