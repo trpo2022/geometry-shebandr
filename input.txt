@@ -1,0 +1,4 @@
+circle(3 2.9,5)
+circle(3 -5,5)
+circle(3 5,5)
+circle(11 6,1)
