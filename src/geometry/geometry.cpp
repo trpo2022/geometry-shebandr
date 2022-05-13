@@ -18,7 +18,7 @@ int main()
         int k = 0;
         while (getline(input, line)) {
             k = stringCollapse(line, Slices, k);
-            if(k==-1){
+            if (k == -1) {
                 return 0;
             }
         }

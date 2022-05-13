@@ -66,7 +66,6 @@ CTEST(stringCollapse, testK)
     const int k = 0;
     int real = stringCollapse(line, Slices, k);
     ASSERT_EQUAL(exp, real);
-
 }
 
 CTEST(stringCollapse, testCircle)
