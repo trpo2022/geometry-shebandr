@@ -1,3 +1,3 @@
 #pragma once
 #include <cmath>
-int intersects(float, float, float, float, float, float);
+int intersects(double, double, double, double, double, double);

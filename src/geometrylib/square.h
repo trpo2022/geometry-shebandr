@@ -1,2 +1,2 @@
 #pragma once
-float calculate_square(float);
+double calculate_square(double);

@@ -1,3 +1,3 @@
 #pragma once
 
-float calculate_perimeter(float);
+double calculate_perimeter(double);
