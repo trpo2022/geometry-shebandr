@@ -13,7 +13,8 @@ int intersects(
 {
     double distanceX = abs(firstX - secondX);
     double distanceY = abs(firstY - secondY);
-    double distanceAbs = sqrt((distanceX * distanceX) + (distanceY * distanceY));
+    double distanceAbs
+            = sqrt((distanceX * distanceX) + (distanceY * distanceY));
     if (distanceAbs > firstR + secondR || distanceAbs < abs(firstR - secondR)) {
         return 0;
     } else if (distanceAbs == firstR + secondR) {
