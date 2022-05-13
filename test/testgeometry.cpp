@@ -62,7 +62,7 @@ CTEST(stringCollapse, testK)
 {
     string line = "circle(3 2.9,5)";
     string Slices[50];
-    int exp = 3;
+    int exp = 4;
     const int k = 0;
     int real = stringCollapse(line, Slices, k);
     ASSERT_EQUAL(exp, real);
