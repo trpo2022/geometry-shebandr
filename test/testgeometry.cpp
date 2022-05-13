@@ -57,3 +57,48 @@ CTEST(intersects, freeInterior)
     double real = intersects(a, b, c, d, e, f);
     ASSERT_EQUAL(exp, real);
 }
+
+CTEST(stringCollapse, testK)
+{
+    string line = "circle(3 2.9,5)";
+    string Slices[50];
+    int exp = 4;
+    const int k = 0;
+    int real = stringCollapse(line, Slices, k);
+    ASSERT_EQUAL(exp, real);
+
+}
+
+CTEST(stringCollapse, testCircle)
+{
+    string line = "circle(3 2.9,5)";
+    string Slices[50];
+    int k = 0;
+    stringCollapse(line, Slices, k);
+    ASSERT_STR("circle", Slices[0].c_str());
+}
+CTEST(stringCollapse, testX)
+{
+    string line = "circle(3 2.9,5)";
+    string Slices[50];
+    int k = 0;
+    stringCollapse(line, Slices, k);
+    ASSERT_STR("3", Slices[1].c_str());
+}
+CTEST(stringCollapse, testY)
+{
+    string line = "circle(3 2.9,5)";
+    string Slices[50];
+    int k = 0;
+    stringCollapse(line, Slices, k);
+    ASSERT_STR("2.9", Slices[2].c_str());
+}
+
+CTEST(stringCollapse, testRad)
+{
+    string line = "circle(3 2.9,5)";
+    string Slices[50];
+    int k = 0;
+    stringCollapse(line, Slices, k);
+    ASSERT_STR("5", Slices[3].c_str());
+}
